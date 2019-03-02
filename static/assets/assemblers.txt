@@ -1,0 +1,5 @@
+x86 and x86_64 | Capstone based
+MIPS | Capstone based, Little/Bin endian modes
+ARM | Capstone based, 32 bits only
+Dalvik|
+CHIP-8 | Just for fun! 

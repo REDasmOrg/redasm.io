@@ -1,0 +1,11 @@
+<div class="m-3 row">
+   {% if page == 'features' %}
+   {%    include 'contents/features.html' %}
+   {% elif page == 'download' %}
+   {%    include 'contents/download.html' %}
+   {% elif page == 'roadmap' %}
+   {%    include 'contents/roadmap.html' %}
+   {% else %}
+   {%    include 'contents/home.html' %}
+   {% endif %}
+</div>

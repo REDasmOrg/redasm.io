@@ -1,0 +1,14 @@
+Ida-Like multiple listing views
+Arm64 architecture
+Python scripting
+External plugin support
+Delphi decompilation
+MFC decompilation
+Dalvik decompilation
+Java decompilation
+Assembler (pseudo)decompilation
+Remote debugging
+Collaborative reversing
+Improved graphs
+Interactive documentation
+Patching

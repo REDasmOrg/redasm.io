@@ -1,0 +1,7 @@
+IDA-Like interactive listing
+Multithreaded analysis
+Graphing support
+Project management
+Signature engine
+Crossplatform
+Easy to use

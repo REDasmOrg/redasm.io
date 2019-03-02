@@ -1,0 +1,90 @@
+/*
+ * Background: #2b2b2b
+ * Foreground: #ecf0f1
+ * Highlight:  #a80a2b
+ */
+
+@font-face {
+ font-family: "Fira Mono"
+ src: url("../fonts/FiraMono-Regular.ttf")
+}
+
+html, body {
+ color: #ecf0f1;
+ background-color: #2b2b2b;
+ font-family: "Fira Mono";
+}
+
+a {
+ color: #ecf0f1 !important;
+ text-decoration: none !important;
+}
+
+a:hover {
+ color: #a80a2b !important;
+ text-decoration: none !important;
+}
+
+/* Bootstrap Overrides */
+.navbar .navbar-brand {
+ font-weight: bold;
+}
+
+.border-secondary {
+ border-color: #a80a2b !important;
+}
+
+.list-group-item-dark {
+ border: 0px;
+ border-radius: 0px !important;
+ color: inherit;
+ background-color: transparent;
+}
+
+.highlighted-text {
+ color: #a80a2b !important;
+}
+
+#redasm-carousel .carousel-item img {
+ filter: brightness(80%)
+}
+
+.breadcrumb {
+ background-color: #343a40;
+}
+
+/* REDasm Styles */
+.content {
+  max-width: 960px;
+  margin: auto;
+}
+
+.redasm-divider {
+ border-top: 2px solid #343a40;
+}
+
+.redasm-footer {
+ height: 10vh;
+}
+
+.redasm-column {
+ background-color: #262626;
+ height: inherit;
+}
+
+.redasm-thumbnail {
+ max-width: 100%;
+ height: auto;
+ display: block;
+}
+
+li.redasm-list-item {
+ list-style-type: none;
+}
+
+li.redasm-list-item:before {
+ content: "> " !important;
+ font-weight: bold;
+ color: #a80a2b;
+}
+
