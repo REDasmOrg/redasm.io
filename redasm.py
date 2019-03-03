@@ -2,18 +2,23 @@ from flask import *
 from website import *
 import os
 
-app = Flask(__name__)
+application = Flask(__name__)
+
+if os.getenv("REDASM_TESTMODE"):
+    print("WARNING: Running redasm.io in TEST MODE")
+    application.jinja_env.auto_reload = True
+
 website = WebSite()
 
-@app.route('/favicon.ico')
+@application.route('/favicon.ico')
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(os.path.join(application.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-@app.route("/")
+@application.route("/")
 def page_main():
     return render_template("index.html", website=website, page="/")
 
-@app.route("/<path:subpath>")
+@application.route("/<path:subpath>")
 def page_index(subpath):
     if subpath == "wiki":
         return redirect(website.wiki_url)
@@ -25,5 +30,4 @@ def page_index(subpath):
         return render_template("index.html", website=website, page=subpath)
 
 if __name__ == "__main__":
-    app.jinja_env.auto_reload = True
-    app.run()
+    application.run()
