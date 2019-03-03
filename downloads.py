@@ -24,12 +24,12 @@ class DownloadItem:
 
     @property
     def size(self):
-        size = os.path.getsize(self._path)
+        res = os.path.getsize(self._path)
         for unit in ["","Ki","Mi","Gi","Ti","Pi","Ei","Zi"]:
-            if abs(size) < 1024.0:
-                return "%3.1f%s%s" % (size, unit, "B")
-            num /= 1024.0
-        return "%.1f%s%s" % (size, "Yi", "B")
+            if abs(res) < 1024.0:
+                return "%3.1f%s%s" % (res, unit, "B")
+            res /= 1024.0
+        return "%.1f%s%s" % (res, "Yi", "B")
 
 class Downloads:
     def __init__(self):
