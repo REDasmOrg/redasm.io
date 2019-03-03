@@ -1,1 +1,4 @@
 python-flask
+uwsgi
+nginx
+gcc
