@@ -1,5 +1,6 @@
 from flask import *
 from website import *
+from downloads import *
 import os
 
 application = Flask(__name__)
@@ -18,16 +19,27 @@ def favicon():
 def page_main():
     return render_template("index.html", website=website, page="/")
 
+@application.route("/download/<int:identifier>/<string:filename>")
+def download_file(identifier, filename):
+    downloads = Downloads()
+    print(downloads.get_download_path(identifier))
+    return send_from_directory(directory=downloads.get_download_path(identifier), filename=filename)
+
 @application.route("/<path:subpath>")
 def page_index(subpath):
     if subpath == "wiki":
         return redirect(website.wiki_url)
-    elif subpath == "source":
+    if subpath == "source":
         return redirect(website.repo_url)
-    elif subpath == "community":
+    if subpath == "community":
         return redirect(website.reddit_url)
-    else:
-        return render_template("index.html", website=website, page=subpath)
+
+    downloads = None
+
+    if subpath == "download":
+        downloads = Downloads()
+
+    return render_template("index.html", website=website, downloads=downloads, page=subpath)
 
 if __name__ == "__main__":
     application.run()
