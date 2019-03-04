@@ -7,8 +7,12 @@ MFC decompilation
 Dalvik decompilation
 Java decompilation
 Assembler (pseudo)decompilation
+"OOP" Reversing
 Remote debugging
 Collaborative reversing
 Improved graphs
 Interactive documentation
-Patching
+Patching support
+REDasm "Web Edition"
+More formats
+More assemblers
