@@ -26,7 +26,7 @@ class WebSite:
 
     @property
     def version(self):
-        return "0.5"
+        return "0.5.1"
 
     @property
     def title(self):

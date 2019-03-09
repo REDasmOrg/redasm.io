@@ -48,8 +48,8 @@ class Downloads:
         self._downloads = list();
         self.fetch_downloads("releases", self._releases)
         self.fetch_downloads("nightlies", self._nightlies)
-        sorted(self._releases, key = lambda download: download.date, reverse=True)
-        sorted(self._nightlies, key = lambda download: download.date, reverse=True)
+        self._releases.sort(key = lambda download: download.date, reverse=True)
+        self._nightlies.sort(key = lambda download: download.date, reverse=True)
 
     def fetch_downloads(self, folder: str, container):
         pathlist = Path.home().joinpath("downloads", folder).glob("**/*.*")
