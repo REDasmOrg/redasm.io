@@ -6,6 +6,7 @@
         <thead>
             <tr>
                 <td>Name</td>
+                <td>Release Date</td>
                 <td>Size</td>
             </tr>
         </thead>
@@ -13,6 +14,7 @@
             {% for d in downloads.releases: %}
             <tr>
                 <td><a href="download/{{d.id}}/{{d.name}}">{{d.name}}</a></td>
+                <td>{{d.release_date}}</td>
                 <td>{{d.size}}</td>
             </tr>
             {% endfor %}
@@ -27,6 +29,7 @@
         <thead>
             <tr>
                 <td>Name</td>
+                <td>Release Date</td>
                 <td>Size</td>
             </tr>
         </thead>
@@ -34,6 +37,7 @@
             {% for d in downloads.nightlies: %}
             <tr>
                 <td><a href="download/{{d.id}}/{{d.name}}">{{d.name}}</a></td>
+                <td>{{d.release_date}}</td>
                 <td>{{d.size}}</td>
             </tr>
             {% endfor %}
