@@ -1,6 +1,7 @@
 from flask import *
 from website import *
 from downloads import *
+from datetime import *
 import os
 
 application = Flask(__name__)
@@ -11,9 +12,29 @@ if os.getenv("REDASM_TESTMODE"):
 
 website = WebSite()
 
-@application.route('/favicon.ico')
+@application.route("/favicon.ico")
 def favicon():
-    return send_from_directory(os.path.join(application.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(application.static_folder, "favicon.ico", mimetype="image/vnd.microsoft.icon")
+
+@application.route("/robots.txt")
+def robots():
+    print(application.static_folder)
+    return send_from_directory(application.static_folder, "robots.txt", mimetype="text/plain")
+
+@application.route("/sitemap.xml")
+def sitemap():
+    pages = []
+    tendaysago = datetime.now() - timedelta(days=10)
+
+    for k in website.menu:
+        if website.menu[k] == "/":
+            continue
+        pages.append(request.url_root + website.menu[k])
+
+    sitemapxml = render_template("sitemap.xml", pages=pages)
+    response = make_response(sitemapxml)
+    response.headers["Content-Type"] = "application/xml"
+    return response
 
 @application.route("/")
 def page_main():
