@@ -1,7 +1,6 @@
 from flask import *
 from website import *
 from downloads import *
-from datetime import *
 import os
 
 application = Flask(__name__)
@@ -24,7 +23,6 @@ def robots():
 @application.route("/sitemap.xml")
 def sitemap():
     pages = []
-    tendaysago = datetime.now() - timedelta(days=10)
 
     for k in website.menu:
         if website.menu[k] == "/":
