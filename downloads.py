@@ -73,3 +73,7 @@ class Downloads:
     @property
     def nightlies(self):
         return self._nightlies
+
+    @property
+    def sections(self):
+        return ["Stable", "Nightly Builds", "Packages"]

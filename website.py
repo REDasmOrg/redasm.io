@@ -26,11 +26,15 @@ class WebSite:
 
     @property
     def version(self):
-        return "0.5.1"
+        return "0.5.2"
 
     @property
     def title(self):
         return "REDasm Disassembler"
+
+    @property
+    def short_title(self):
+        return "REDasm"
 
     @property
     def brand(self):
@@ -78,6 +82,9 @@ class WebSite:
 
     def get_formats(self):
         return self._readcolumns("formats.txt")
+
+    def get_packages(self):
+        return self._readcolumns("packages.txt")
 
     def get_carousel(self):
         carousel = [ ]

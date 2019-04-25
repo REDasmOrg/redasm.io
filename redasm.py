@@ -1,6 +1,7 @@
 from flask import *
 from website import *
 from downloads import *
+import re
 import os
 
 application = Flask(__name__)
@@ -10,6 +11,10 @@ if os.getenv("REDASM_TESTMODE"):
     application.jinja_env.auto_reload = True
 
 website = WebSite()
+
+@application.template_filter("identifier")
+def identifier(input):
+    return re.sub(r"\s+", "_", input.lower())
 
 @application.route("/favicon.ico")
 def favicon():

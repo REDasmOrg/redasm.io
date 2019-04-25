@@ -1,0 +1,4 @@
+Arch    | redasm-git | https://aur.archlinux.org/packages/redasm-git/
+Debian  | redasm     | http://phd-sid.ethz.ch/debian/redasm
+FreeBSD | redasm     | https://www.freshports.org/devel/redasm
+

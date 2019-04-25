@@ -18,6 +18,7 @@ html, body {
 a {
  color: #ecf0f1 !important;
  text-decoration: none !important;
+ outline: 0;
 }
 
 a:hover {
@@ -28,6 +29,24 @@ a:hover {
 /* Bootstrap Overrides */
 .navbar .navbar-brand {
  font-weight: bold;
+}
+
+link, .nav-tabs .nav-link.active {
+ background-color: #343a40 !important;
+ color: #a80a2b !important;
+}
+
+.nav-tabs .nav-link:hover {
+ background-color: #343a40 !important;
+ color: #ecf0f1 !important;
+}
+
+.nav-tabs .nav-link {
+ border-top-left-radius: 0;
+ border-top-right-radius: 0;
+ border-left-width: 0;
+ border-top-width: 0;
+ border-right-width: 0;
 }
 
 .border-secondary {
@@ -59,6 +78,10 @@ a:hover {
   margin: auto;
 }
 
+.fill-width {
+  width: 100%;
+}
+
 .redasm-divider {
  border-top: 2px solid #343a40;
 }
@@ -67,7 +90,7 @@ a:hover {
  height: 10vh;
 }
 
-.redasm-column {
+.redasm-content {
  background-color: #262626;
  height: inherit;
 }
