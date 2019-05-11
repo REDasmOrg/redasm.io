@@ -64,7 +64,7 @@ class Downloads:
 
     @property
     def current_version(self):
-        return "2.0"
+        return "2.1"
 
     @property
     def releases(self):
