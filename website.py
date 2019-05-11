@@ -26,7 +26,7 @@ class WebSite:
 
     @property
     def version(self):
-        return "0.5.2"
+        return "0.5.3"
 
     @property
     def title(self):
@@ -75,7 +75,7 @@ class WebSite:
         return self._readlines("features.txt")
 
     def get_roadmap(self):
-        return self._readlines("roadmap.txt")
+        return self._readcolumns("roadmap.txt")
 
     def get_assemblers(self):
         return self._readcolumns("assemblers.txt")

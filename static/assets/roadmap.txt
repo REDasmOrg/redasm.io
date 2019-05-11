@@ -1,18 +1,18 @@
-Ida-Like multiple listing views
-Arm64 architecture
-Python scripting
-External plugin support
-Delphi decompilation
-MFC decompilation
-Dalvik decompilation
-Java decompilation
-Assembler (pseudo)decompilation
-"OOP" Reversing
-Remote debugging
-Collaborative reversing
-Improved graphs
-Interactive documentation
-Patching support
-REDasm "Web Edition"
-More formats
-More assemblers
+Ida-Like multiple listing views |
+Arm64 architecture |
+Python scripting |
+External plugin support |
+Delphi decompilation |
+MFC decompilation |
+Dalvik decompilation |
+Java decompilation |
+Assembler (pseudo)decompilation |
+"OOP" Reversing |
+Remote debugging |
+Collaborative reversing |
+Improved graphs | 2.1
+Interactive documentation |
+Patching support |
+REDasm "Web Edition" |
+More formats | In Progress
+More assemblers | In Progress
