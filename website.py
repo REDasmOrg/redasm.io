@@ -9,7 +9,8 @@ class WebSite:
                        "Roadmap": "roadmap",
                        "Wiki": "wiki",
                        "Source Code": "source",
-                       "Community": "community" }
+                       "Reddit": "reddit",
+                       "Telegram": "telegram" }
 
     def _readlines(self, filename):
         lines = []
@@ -63,6 +64,10 @@ class WebSite:
     @property
     def reddit_url(self):
         return "https://www.reddit.com/r/REDasm"
+
+    @property
+    def telegram_url(self):
+        return "https://t.me/REDasmDisassembler"
 
     @property
     def menu(self):

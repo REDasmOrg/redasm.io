@@ -55,8 +55,10 @@ def page_index(subpath):
         return redirect(website.wiki_url)
     if subpath == "source":
         return redirect(website.repo_url)
-    if subpath == "community":
+    if subpath == "reddit":
         return redirect(website.reddit_url)
+    if subpath == "telegram":
+        return redirect(website.telegram_url)
 
     downloads = None
 
