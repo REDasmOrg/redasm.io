@@ -51,22 +51,14 @@ def download_file(identifier, filename):
 
 @application.route("/<path:subpath>")
 def page_index(subpath):
-    if subpath == "wiki":
-        return redirect(website.wiki_url)
-    if subpath == "source":
-        return redirect(website.repo_url)
-    if subpath == "reddit":
-        return redirect(website.reddit_url)
-    if subpath == "telegram":
-        return redirect(website.telegram_url)
-
-    downloads = None
+    PAGES = ["features", "roadmap", "download"]
+    if subpath not in PAGES: abort(404)
 
     if subpath == "download":
        downloads = Downloads()
        return render_template("index.html", website=website, downloads=downloads, page=subpath)
 
-    abort(404)
+    return render_template("index.html", website=website, downloads=None, page=subpath)
 
 if __name__ == "__main__":
     application.run()
