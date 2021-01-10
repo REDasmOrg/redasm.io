@@ -63,9 +63,10 @@ def page_index(subpath):
     downloads = None
 
     if subpath == "download":
-        downloads = Downloads()
+       downloads = Downloads()
+       return render_template("index.html", website=website, downloads=downloads, page=subpath)
 
-    return render_template("index.html", website=website, downloads=downloads, page=subpath)
+    abort(404)
 
 if __name__ == "__main__":
     application.run()

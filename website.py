@@ -4,9 +4,9 @@ import os
 class WebSite:
     def __init__(self):
         self._menu = { "Home": "/",
-                       "Features": "features",
-                       "Roadmap": "roadmap",
-                       "Download": "download" }
+                       "Features": "/features",
+                       "Roadmap": "/roadmap",
+                       "Download": "/download" }
 
     def _readlines(self, filename):
         lines = []

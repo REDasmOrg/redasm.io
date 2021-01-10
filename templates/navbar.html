@@ -4,7 +4,7 @@
         {% for k in website.menu %}
             {% set v = website.menu_url(k) %}
             <li class="px-2 nav-item {% if v == page %} active {% endif %}">
-                <a class="nav-link active" href="/{{v}}">{{k}}</a>
+                <a class="nav-link active" href="{{v}}">{{k}}</a>
             </li>
         {% endfor %}
         </ul>
