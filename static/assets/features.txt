@@ -1,7 +1,7 @@
 IDA-Like interactive listing
 Multithreaded analysis
 Graphing support
-Project management
-Signature engine
-Crossplatform
+Runs on Windows and Linux
 Easy to use
+C API (from 3.0)
+Plugin Support (from 3.0)

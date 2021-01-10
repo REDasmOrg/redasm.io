@@ -6,7 +6,7 @@
 
 @font-face {
  font-family: "Fira Mono"
- src: url("../fonts/FiraMono-Regular.ttf")
+ src: url("../webfonts/FiraMono-Regular.ttf")
 }
 
 html, body {
@@ -73,11 +73,6 @@ link, .nav-tabs .nav-link.active {
 }
 
 /* REDasm Styles */
-.content {
-  max-width: 960px;
-  margin: auto;
-}
-
 .fill-width {
   width: 100%;
 }

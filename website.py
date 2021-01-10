@@ -5,12 +5,8 @@ class WebSite:
     def __init__(self):
         self._menu = { "Home": "/",
                        "Features": "features",
-                       "Download": "download",
                        "Roadmap": "roadmap",
-                       "Wiki": "wiki",
-                       "Source Code": "source",
-                       "Reddit": "reddit",
-                       "Telegram": "telegram" }
+                       "Download": "download" }
 
     def _readlines(self, filename):
         lines = []
@@ -27,7 +23,7 @@ class WebSite:
 
     @property
     def version(self):
-        return "0.5.3"
+        return "0.6.0"
 
     @property
     def title(self):

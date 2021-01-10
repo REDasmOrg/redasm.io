@@ -2,28 +2,22 @@
   <p>REDasm is under heavy development but it provides several interesting features:</p>
   <ul>
     {% for feature in website.get_features(): %}
-    <li class="redasm-list-item">{{feature|trim}}.</li>
+    <li class="redasm-list-item">{{feature|trim}}</li>
+    {% endfor %}
+  </ul>
+  <h5 class="text-uppercase">Supported Formats</h5>
+  <ul>
+    {% for format in website.get_formats(): %}
+    <li class="redasm-list-item">{{format[0]|trim}}</li>
+    {% endfor %}
+  </ul>
+  <h5 class="text-uppercase">Supported Assemblers</h5>
+  <ul>
+    {% for assembler in website.get_assemblers(): %}
+    <li class="redasm-list-item">{{assembler[0]|trim}}</li>
     {% endfor %}
   </ul>
   <p>
   Check the <a class="highlighted-text" href="roadmap">Roadmap</a> for more features and ideas or
-     <a class="highlighted-text" href="{{website.bugtracker_url}}">open an issue on GitHub!</a></p>
-  <h5 class="text-uppercase">Supported Assemblers</h5>
-  <table class="table table-dark">
-    {% for assembler in website.get_assemblers(): %}
-    <tr>
-      <td>{{assembler[0]}}</td>
-      <td>{{assembler[1]}}</td>
-    </tr>
-    {% endfor %}
-  </table>
-  <h5 class="text-uppercase">Supported Formats</h5>
-  <table class="table table-dark">
-    {% for format in website.get_formats(): %}
-    <tr>
-      <td>{{format[0]}}</td>
-      <td>{{format[1]}}</td>
-    </tr>
-    {% endfor %}
-  </table>
+  <a class="highlighted-text" href="{{website.bugtracker_url}}">open an issue on GitHub!</a></p>
 </div>

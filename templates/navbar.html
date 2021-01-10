@@ -1,14 +1,17 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="navbar-nav collapse navbar-collapse nav-fill w-100 content" id="redasm-navbar">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         {% for k in website.menu %}
             {% set v = website.menu_url(k) %}
-            {% if v == page %}
-            <a class="nav-item nav-link active" href="{{v}}">{{k}}</a>
-            {% else %}
-            <a class="nav-item nav-link" href="{{v}}">{{k}}</a>
-            {% endif %}
+            <li class="px-2 nav-item {% if v == page %} active {% endif %}">
+                <a class="nav-link active" href="{{v}}">{{k}}</a>
+            </li>
         {% endfor %}
+        </ul>
     </div>
+    <a href="https://twitter.com/re_dasm" class="mx-1"><i class="fab fa-twitter fa-fw fa-lg"></i></a>
+    <a href="https://t.me/REDasmDisassembler" class="mx-1"><i class="fab fa-telegram-plane fa-fw fa-lg"></i></a>
+    <a href="https://www.reddit.com/r/REDasm" class="mx-1"><i class="fab fa-reddit-alien fa-fw fa-lg"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#redasm-navbar" aria-controls="redasm-navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

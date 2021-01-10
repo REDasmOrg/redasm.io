@@ -1,34 +1,34 @@
 <p>
-  <img class="rounded float-left redasm-thumbnail" src="{{website.logo_url}}"/>
-  REDasm is an interactive, multiarchitecture disassembler written in modern C++11 using Qt5 as UI Framework.<br>
-  Its core is modular and it can be easily extended in order to support new file formats and instruction sets.<br>
-  You can hack and improve REDasm without any issues and limitations.<br>
-  <br>
-  <i>Runs on Windows and Linux.</i>
+<img class="rounded float-left redasm-thumbnail" src="{{website.logo_url}}"/>
+REDasm is a cross platform disassembler with a modern codebase useful from the hobbyist to the professional reverse engineer.<br><br>
+All features are provided by <a href="https://github.com/REDasmOrg/REDasm-Library">LibREDasm</a> which loads plugins developed in C, C++ and Python3 (you can also support new languages if you want!) and an user friendly Qt frontend.<br><br>
+You can hack and improve REDasm without any issues and limitations.<br>
+<br>
+<div class="text-right"><i>Runs on Windows and Linux.</i></div>
 </p>
 <div id="redasm-carousel" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-  {% for _ in website.get_carousel(): %}
-  <li data-target="#redasm-carousel" data-slide-to="{{loop.index0}}" class="active"></li>
-  {% endfor %}
+    {% for _ in website.get_carousel(): %}
+    <li data-target="#redasm-carousel" data-slide-to="{{loop.index0}}" class="active"></li>
+    {% endfor %}
   </ol>
   <div class="carousel-inner">
-  {% for c in website.get_carousel(): %}
+    {% for c in website.get_carousel(): %}
     {% if loop.index0 == 0: %}
-      <div class="carousel-item active">
-    {% else: %}
+    <div class="carousel-item active">
+      {% else: %}
       <div class="carousel-item">
-    {% endif %}
-    <img class="d-block w-100" src="{{c}}" alt="Slide {{loop.index0}}">
+        {% endif %}
+        <img class="d-block w-100" src="{{c}}" alt="Slide {{loop.index0}}">
+      </div>
+      {% endfor %}
     </div>
-  {% endfor %}
+    <a class="carousel-control-prev" href="#redasm-carousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">&lt;</span>
+    </a>
+    <a class="carousel-control-next" href="#redasm-carousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">&gt;</span>
+    </a>
   </div>
-  <a class="carousel-control-prev" href="#redasm-carousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">&lt;</span>
-  </a>
-  <a class="carousel-control-next" href="#redasm-carousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">&gt;</span>
-  </a>
-</div>

@@ -1,7 +1,6 @@
 Portable Executable (PE) | 32/64 bits
 ELF Executable | 32/64 bits, Little/Big endian
 Sony Playstation 1 Executable | PsyQ 4.6/7 signatures available
-Android Dalvik Executable (DEX)|
+Sony Playstation 1 BIOS | 
 XBox1 Executable (XBE)|
-GameBoy Advance ROM | In development
-Nintendo64 ROM | Little/Big endian and "swapped roms" are supported, In development
+ESP32 Roms
