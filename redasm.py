@@ -32,7 +32,7 @@ def sitemap():
     for k in website.menu:
         if website.menu[k] == "/":
             continue
-        pages.append(request.url_root + website.menu[k])
+        pages.append(request.url_root + website.menu[k][1:])
 
     sitemapxml = render_template("sitemap.xml", pages=pages)
     response = make_response(sitemapxml)
