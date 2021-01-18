@@ -76,4 +76,4 @@ class Downloads:
 
     @property
     def sections(self):
-        return ["Stable", "Nightly Builds", "Packages"]
+        return ["Releases", "Nightly Builds", "Packages"]
