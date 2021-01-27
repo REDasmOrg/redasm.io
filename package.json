@@ -1,0 +1,44 @@
+{
+  "name": "redasm.io",
+  "version": "0.7.0",
+  "description": "REDasm Website",
+  "main": "server.js",
+  "scripts": {
+    "bundle": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/REDasmOrg/redasm.io.git"
+  },
+  "author": "Dax",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/REDasmOrg/redasm.io/issues"
+  },
+  "homepage": "https://github.com/REDasmOrg/redasm.io#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "helmet": "^4.4.1",
+    "jquery": "^3.5.1",
+    "nunjucks": "^3.2.2",
+    "popper.js": "^1.16.1",
+    "serve-favicon": "^2.5.0",
+    "typeface-montserrat": "^1.1.13"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "sass": "^1.32.5",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.16.0",
+    "webpack-cli": "^4.4.0"
+  }
+}

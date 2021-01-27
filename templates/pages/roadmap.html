@@ -1,0 +1,26 @@
+{% extends "components/page.html" %}
+
+{% block content %}
+<p>This is a draft of REDasm's roadmap, items are listed in no particular order:</p>
+<table class="table table-dark table-sm">
+    <thead>
+        <tr>
+            <td>Feature</td>
+            <td>Available in</td>
+        </tr>
+    </thead>
+    <tbody>
+      {% for r in roadmap %}
+        <tr>
+            {% if r[1]|trim|length %}
+                <td>{{r[0]|trim}}</td>
+                <td>{{r[1]|trim}}</td>
+            {% else %}
+                <td>{{r[0]|trim}}</td>
+                <td>Not Implemented</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

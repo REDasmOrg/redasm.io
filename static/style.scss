@@ -1,0 +1,28 @@
+$body-bg:    #2b2b2b;
+$body-color: #eeeeee;
+
+$light: $body-color;
+$dark:#262626;
+
+$primary:   #c03131;
+$secondary: #f7ca08;
+$info: $body-color;
+
+$link-color:       $primary;
+$link-hover-color: $secondary;
+
+$navbar-dark-color:       $body-color;
+$navbar-dark-hover-color: $primary;
+
+$nav-tabs-border-color:      $body-color;
+$nav-tabs-link-active-color: $primary;
+
+body {
+    font-family: "Montserrat", sans-serif !important;
+}
+
+hr {
+    border-top: 1px solid $body-color !important;
+}
+
+@import "node_modules/bootstrap/scss/bootstrap";

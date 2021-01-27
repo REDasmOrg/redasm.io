@@ -1,5 +1,5 @@
-x86 and x86_64 | Zydis Based
-MIPS | Little/Big endian modes
-ARM64 | Capstone based, Little
-CHIP-8 |
-Xtensa |
+x86 and x86_64
+MIPS
+ARM64
+CHIP-8
+Xtensa
