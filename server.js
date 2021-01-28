@@ -11,7 +11,10 @@ const fs = require("fs");
 const app = express(); 
 app.use(favicon(path.join(__dirname, "static", "favicon.ico")));
 app.use(compression());
-app.use(helmet());
+
+app.use(helmet({
+  contentSecurityPolicy: false
+}));
 
 let appveyor = new AppVeyor("Dax89", "redasm-ntvg3");
 
@@ -58,4 +61,4 @@ app.get("/api/download/:ostype/:buildid", (req, res) => {
   console.log(req);
 });
 
-app.listen(3000);
+app.listen(1989);
