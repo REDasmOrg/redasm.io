@@ -1,6 +1,0 @@
-Portable Executable (PE)
-ELF Executable | 32/64 bits
-Sony Playstation 1 Executable
-Sony Playstation 1 BIOS 
-XBox1 Executable (XBE)
-ESP32 Roms

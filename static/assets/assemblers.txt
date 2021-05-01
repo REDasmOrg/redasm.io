@@ -1,5 +1,0 @@
-x86 and x86_64
-MIPS
-ARM64
-CHIP-8
-Xtensa
