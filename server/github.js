@@ -35,7 +35,7 @@ export default class GitHub {
     _isExpired(filename) {
         if(!fs.existsSync(filename)) return true;
         const { birthtime } = fs.statSync(filename);
-        let days = Math.round(Math.abs(new Date() - birthtime) / 36e5);
+        let days = Math.floor(Math.abs(new Date() - birthtime) / 36e5);
         return days > 0; // >= 1 day = expired
     }
 }
