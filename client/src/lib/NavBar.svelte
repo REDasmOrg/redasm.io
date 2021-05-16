@@ -12,6 +12,7 @@
                 <li class="px-2 nav-item"><a class="nav-link" href="/">Home</a></li>
                 <li class="px-2 nav-item"><a class="nav-link" href="/features">Features</a></li>
                 <li class="px-2 nav-item"><a class="nav-link" href="/roadmap">Roadmap</a></li>
+                <!-- <li class="px-2 nav-item"><a class="nav-link" href="/docs">Documentation</a></li> -->
                 <li class="px-2 nav-item"><a class="nav-link" href="/download">Download</a></li>
             </ul>
         </div>

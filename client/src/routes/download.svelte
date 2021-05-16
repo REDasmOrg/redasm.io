@@ -25,7 +25,7 @@
         ]
     };
 
-    let currtab = $page.query.get("page") || TABS[1];
+    let currtab = $page.query.get("page") || TABS[0];
 
     function getFileSize(bytes, si=false, dp=1) {
         const thresh = si ? 1000 : 1024;
@@ -45,7 +45,7 @@
     }
 
     function downloadArtifact() {
-        console.log(selartifact)
+        window.location.href = selartifacts[selartifact].archive_download_url;
     }
 
     async function getReleases() {
@@ -88,7 +88,7 @@
             return acc;
         }, { });
 
-        console.log(r);
+        //console.log(r);
         return r;
     }
 
@@ -117,7 +117,7 @@
                                     <a href="{r.asset.url}">{r.asset.name}</a>
                                 </div>
                                 {#if r.prerelease}
-                                    <div class="mx-2 badge bg-warning">BETA</div>
+                                    <div class="mx-2 badge bg-warning text-dark text-uppercase">Prerelease</div>
                                 {/if}
                         </td>
                         <td class="col-1">{getFileSize(r.asset.size)}</td>
@@ -134,8 +134,11 @@
             Nightly builds are provided by <a href="https://github.com/REDasmOrg/REDasm/actions/workflows/build.yml">GitHub Actions</a>.<br>
             They provides the latest features and bugfixes, but they can be unstable.
         </div>
-        <div class="mb-3">
-            Nightly build:
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary" on:click={() => window.location.href = "https://github.com/REDasmOrg/REDasm/actions/workflows/build.yml"}>Open GitHub Actions</button>
+        </div>
+        <div class="d-none mb-3">
+            <div class="pb-1">Select a nightly build below:</div>
             <div class="row">
                 <div class="col">
                     <select class="form-select form-select-sm" bind:value={seldate}>
@@ -156,7 +159,7 @@
                     <select class="form-select form-select-sm" bind:value={selartifact}>
                         <option value=""></option>
                         {#each selartifacts as a, i}
-                            <option value="{i}">{a.name} ({getFileSize(a.size_in_bytes)})</option>
+                            <option value="{i}">{a.name} {getFileSize(a.size_in_bytes)} ({new Date(a.created_at).toLocaleTimeString()})</option>
                         {/each}
                     </select>
                 </div>
