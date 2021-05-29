@@ -1,6 +1,7 @@
-const node = require("@sveltejs/adapter-node");
-const preprocess = require("svelte-preprocess");
-const pkg = require("./package.json");
+import path from "path";
+import node from "@sveltejs/adapter-node";
+import preprocess from "svelte-preprocess";
+import viteMd from "vite-plugin-markdown";
 
 const dev = process.env.NODE_ENV !== "production"
 
@@ -8,13 +9,14 @@ let SVELTE_CONFIG = {
     kit: {
         adapter: node(),
         target: "#app-main",
-
-        vite: {
+        vite: { 
             compilerOptions: { dev },
-            ssr: { noExternal: Object.keys(pkg.dependencies || {}) },
+            plugins: [viteMd.plugin({ mode: viteMd.Mode.HTML})],
         }
     },
-    preprocess: preprocess(),
+    preprocess: preprocess({
+        sourceMap: dev,
+    }),
 };
 
 function createConfig() {
@@ -33,4 +35,4 @@ function createConfig() {
     return SVELTE_CONFIG;
 }
 
-module.exports = createConfig()
+export default createConfig()

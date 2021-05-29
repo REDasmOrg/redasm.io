@@ -2,11 +2,11 @@
     export let header = [ ];
 </script>
 
-<table class="table table-hover">
+<table class="w-full">
     <thead>
         <tr>
             {#each header as h}
-                <th>{h}</th>
+                <th class="border-b">{h}</th>
             {/each}
         </tr>
     </thead>

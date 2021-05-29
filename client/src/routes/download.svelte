@@ -1,9 +1,12 @@
 <script>
     import { onMount } from "svelte";
     import { page } from "$app/stores";
-    import Table from "$lib/Table.svelte";
+    import Table from "$lib/components/Table.svelte";
+    import Tabs from "$lib/components/Tabs.svelte";
+    import Link from "$lib/components/Link.svelte";
+    import Button from "$lib/components/Button.svelte";
 
-    const TABS = [ "Releases", "Nightly Builds", "Packages"];
+    const PAGES = [ "Releases", "Nightly Builds", "Packages"];
     let artifacts = [ ], releases = [ ], selartifacts = [ ], seldate = "", selartifact = "";
 
     $: selartifacts = seldate && seldate in artifacts ? artifacts[seldate] : [ ];
@@ -25,7 +28,7 @@
         ]
     };
 
-    let currtab = $page.query.get("page") || TABS[0];
+    let currtab = $page.query.get("page") || PAGES[0];
 
     function getFileSize(bytes, si=false, dp=1) {
         const thresh = si ? 1000 : 1024;
@@ -98,105 +101,102 @@
     });
 </script>
 
-<ul class="nav nav-tabs">
-    {#each TABS as t}
-        <li class="nav-item">
-            <a href="#" class="nav-link" class:active={currtab === t} on:click|preventDefault={() => currtab = t}>{t}</a>
-        </li>
-    {/each}
-</ul>
-<div class="my-3">
-    <div class:d-none={currtab !== TABS[0]}>
-        <div class="mb-3">
+<svelte:head>
+    <title>REDasm - Download</title>
+</svelte:head>
+
+<Tabs pages={PAGES} bind:currentpage={currtab}>
+    <div class:hidden={currtab !== PAGES[0]}>
+        <div class="text-center">
             <Table header={["Name", "Size", "Date", "Version", "Downloads"]}>
                 {#each releases as r}
                     <tr>
-                        <td>
-                            <div class="d-flex">
-                                <div class="flex-fill">
-                                    <a href="{r.asset.url}">{r.asset.name}</a>
+                        <td class="p-1">
+                            <div class="flex text-left">
+                                <div class="flex-grow">
+                                    <Link href="{r.asset.url}">{r.asset.name}</Link>
                                 </div>
                                 {#if r.prerelease}
-                                    <div class="mx-2 badge bg-warning text-dark text-uppercase">Prerelease</div>
+                                    <span class="mx-2 bg-secondary text-sm font-bold p-1 rounded text-dark uppercase">Prerelease</span>
                                 {/if}
                         </td>
-                        <td class="col-1">{getFileSize(r.asset.size)}</td>
-                        <td class="col-2">{r.asset.created}</td>
-                        <td class="col-2">{r.version}</td>
-                        <td class="col-1">{r.asset.downloads}</td>
+                        <td>{getFileSize(r.asset.size)}</td>
+                        <td>{r.asset.created}</td>
+                        <td>{r.version}</td>
+                        <td>{r.asset.downloads}</td>
                     </tr>
                 {/each}
             </Table>
+                            </div>
         </div>
-    </div>
-    <div class:d-none={currtab !== TABS[1]}>
-        <div class="mb-3">
-            Nightly builds are provided by <a href="https://github.com/REDasmOrg/REDasm/actions/workflows/build.yml">GitHub Actions</a>.<br>
-            They provides the latest features and bugfixes, but they can be unstable.
-        </div>
-        <div class="d-flex justify-content-center">
-            <button class="btn btn-primary" on:click={() => window.location.href = "https://github.com/REDasmOrg/REDasm/actions/workflows/build.yml"}>Open GitHub Actions</button>
-        </div>
-        <div class="d-none mb-3">
-            <div class="pb-1">Select a nightly build below:</div>
-            <div class="row">
-                <div class="col">
-                    <select class="form-select form-select-sm" bind:value={seldate}>
-                        <option value=""></option>
-                        {#each Object.keys(artifacts) as d}
-                            <option value="{d}">{d}</option>
-                        {/each}
-                    </select>
+        <div class:hidden={currtab !== PAGES[1]}>
+            <div class="mb-3">
+                Nightly builds are provided by <a href="https://github.com/REDasmOrg/REDasm/actions/workflows/build.yml">GitHub Actions</a>.<br>
+                They provides the latest features and bugfixes, but they can be unstable.
+            </div>
+            <div class="flex justify-center">
+                <Button color="primary" on:click={() => window.location.href = "https://github.com/REDasmOrg/REDasm/actions/workflows/build.yml"}>Open GitHub Actions</Button>
+            </div>
+            <div class="hidden mb-3">
+                <div class="pb-1">Select a nightly build below:</div>
+                <div class="row">
+                    <div class="col">
+                        <select class="form-select form-select-sm" bind:value={seldate}>
+                            <option value=""></option>
+                            {#each Object.keys(artifacts) as d}
+                                <option value="{d}">{d}</option>
+                            {/each}
+                        </select>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-4"></div>
                 </div>
-                <div class="col-1"></div>
-                <div class="col-4"></div>
+            </div>
+            <div class:hidden={!selartifacts.length}>
+                Version:
+                <div class="row">
+                    <div class="col">
+                        <select class="form-select form-select-sm" bind:value={selartifact}>
+                            <option value=""></option>
+                            {#each selartifacts as a, i}
+                                <option value="{i}">{a.name} {getFileSize(a.size_in_bytes)} ({new Date(a.created_at).toLocaleTimeString()})</option>
+                            {/each}
+                        </select>
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-primary btn-sm" class:d-none={selartifact === ""} on:click={downloadArtifact}>Download</button>
+                    </div>
+                    <div class="col-4"></div>
+                </div>
             </div>
         </div>
-        <div class:d-none={!selartifacts.length}>
-            Version:
-            <div class="row">
-                <div class="col">
-                    <select class="form-select form-select-sm" bind:value={selartifact}>
-                        <option value=""></option>
-                        {#each selartifacts as a, i}
-                            <option value="{i}">{a.name} {getFileSize(a.size_in_bytes)} ({new Date(a.created_at).toLocaleTimeString()})</option>
-                        {/each}
-                    </select>
-                </div>
-                <div class="col-1">
-                    <button class="btn btn-primary btn-sm" class:d-none={selartifact === ""} on:click={downloadArtifact}>Download</button>
-                </div>
-                <div class="col-4"></div>
+        <div class:hidden={currtab !== PAGES[2]}>
+            <div class="mb-3">
+                Unofficial packages created by the community.
             </div>
-        </div>
-    </div>
-    <div class:d-none={currtab !== TABS[2]}>
-        <div class="mb-3">
-            Unofficial packages created by the community.
-        </div>
-        <table class="table table-hover text-nowrap">
-            <thead>
-                <tr>
-                    {#each PACKAGES.header as h}
-                        <th>{h.label}</th>
-                    {/each}
-                </tr>
-            </thead>
-            <tbody>
-                {#each PACKAGES.data as d}
+            <table class="w-full text-center">
+                <thead>
                     <tr>
                         {#each PACKAGES.header as h}
-                            <td>
-                                {#if h.value === "url"}
-                                    <a href={d[h.value]}>{d[h.value]}</a>
-                                {:else}
-                                    {d[h.value]}
-                                {/if}
-                            </td>
+                            <th class="border-b p-1">{h.label}</th>
                         {/each}
                     </tr>
-                {/each}
-            </tbody>
-        </table>
-    </div>
-</div>
+                </thead>
+                <tbody>
+                    {#each PACKAGES.data as d}
+                        <tr>
+                            {#each PACKAGES.header as h}
+                                <td class="p-1">
+                                    {#if h.value === "url"}
+                                        <Link href={d[h.value]}>{d[h.value]}</Link>
+                                    {:else}
+                                        {d[h.value]}
+                                    {/if}
+                                </td>
+                            {/each}
+                        </tr>
+                    {/each}
+                </tbody>
+            </table>
+        </div>
+</Tabs>
