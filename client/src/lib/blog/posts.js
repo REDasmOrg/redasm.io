@@ -1,7 +1,7 @@
 const allposts = import.meta.globEager("/src/blog/*.md");
 
 export function getPostUrl(path) {
-    let res = /\.\/posts\/(.+)\.md$/.exec(path);
+    let res = /\/src\/blog\/(.+)\.md$/.exec(path);
     if(!res) return undefined;
     let url = encodeURIComponent(res[1]);
     return `/blog/${url}`;
@@ -9,7 +9,7 @@ export function getPostUrl(path) {
 
 export function getPost(postid) {
     let fn = decodeURIComponent(postid);
-    postid = `./posts/${fn}.md`;
+    postid = `/src/blog/${fn}.md`;
     return (postid in allposts) ? allposts[postid] : undefined;
 }
 
