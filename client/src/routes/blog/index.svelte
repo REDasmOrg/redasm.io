@@ -13,14 +13,20 @@
     <title>REDasm - Blog</title>
 </svelte:head>
 
-{#each pageposts as post}
-    <PostPreview {post}/>
-{/each}
+{#if pageposts.length}
+    {#each pageposts as post}
+        <PostPreview {post}/>
+    {/each}
 
-<div class="flex justify-center">
-    <Pagination
-            length={posts.length}
-            currentpage={currentpage}
-            on:pagechange={(e) => currentpage = e.detail.page }
-            />
-</div>
+    <div class="flex justify-center">
+        <Pagination
+                length={posts.length}
+                currentpage={currentpage}
+                on:pagechange={(e) => currentpage = e.detail.page }
+                />
+    </div>
+{:else}
+    <div class="text-center">
+        Blog is empty
+    </div>
+{/if}

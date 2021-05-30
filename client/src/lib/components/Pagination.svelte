@@ -22,13 +22,12 @@
     }
 
     function changePage(page) {
-        console.log(page, pagecount);
         currentpage = page;
         dispatch("pagechange", {page});
     }
 </script>
 
-<div>
+<div class:hidden={pagecount <2}>
     <button class="bg-primary text-white w-8 h-8 text-lg" disabled={!currentpage} on:click={() => changePage(currentpage - 1)}>
         &laquo;
     </button>
