@@ -1,6 +1,4 @@
 <script>
-    import Table from "$lib/components/Table.svelte";
-
     const ROADMAP = [
         { name: "Ida-Like multiple listing views", version: "3.0 Beta" },
         { name: "Arm64 architecture", version: "3.0 Beta" },
@@ -23,20 +21,20 @@
     ];
 </script>
 
-<svelte:head>
-    <title>REDasm - Roadmap</title>
-</svelte:head>
-
-<p class="pb-2">This is a draft of REDasm's roadmap, items are listed in no particular order:</p>
-<Table class="table" header={["Feature", "In Version"]}>
-    {#each ROADMAP as r}
+<p>This is a draft of REDasm's roadmap, items are listed in no particular order:</p>
+<table class="table table-dark table-sm">
+    <thead>
         <tr>
-            <td class="p-1">{r.name}</td>
-            <td class="p-1">
-                <div class:text-primary={!r.version}>
-                    {r.version || "Not Implemented"}
-                </div>
-            </td>
+            <td>Feature</td>
+            <td>In Version</td>
         </tr>
-    {/each}
-</Table>
+    </thead>
+    <tbody>
+      {#each ROADMAP as r}
+        <tr>
+            <td>{r.name}</td>
+            <td class:text-primary={!r.version}>{r.version || "Not Implemented"}</td>
+        </tr>
+        {/each}
+    </tbody>
+</table>
