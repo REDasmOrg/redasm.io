@@ -53,7 +53,8 @@
         ],
     };
 
-    let currtab = $page.query.get("page") || TABS[0];
+    let currtab = $page.url.searchParams.get("page") || TABS[0];
+    if (!TABS.includes(currtab)) currtab = TABS[0];
 
     function getFileSize(bytes, si = false, dp = 1) {
         const thresh = si ? 1000 : 1024;
